@@ -42,6 +42,13 @@ export default class Week extends PureComponent {
   scrollWidth = 0
   scrollContentWidth = 0
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return !isSameDay(nextProps.startDate, this.props.startDate) ||
+           !isSameDay(nextProps.endDate, this.props.endDate) ||
+           !isSameDay(nextProps.selectedDate, this.props.selectedDate) ||
+           !isSameDay(nextState.selectedDate, this.state.selectedDate)
+  }
+
   componentWillReceiveProps(newProps) {
     this.setState({ selectedDate: newProps.selectedDate })
   }
@@ -49,6 +56,8 @@ export default class Week extends PureComponent {
   onPressDate = (selectedDate, index) => {
     this.setState({ selectedDate })
     this.scrollTo(index)
+
+    this.props.onPress && this.props.onPress(selectedDate, index)
   }
 
   scrollTo = (index, animated = true) => {
