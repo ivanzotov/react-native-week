@@ -6,22 +6,26 @@ import {
 export default {
   main: StyleSheet.create({
     wrap: {
-      height: 100,
-      backgroundColor: '#333',
+      height: 120,
+      backgroundColor: '#fff',
     },
 
     scrollView: {},
-    scrollViewContent: {},
+    scrollViewContent: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
   }),
 
   item: StyleSheet.create({
     wrap: {
+      height: 70,
       alignItems: 'center',
     },
 
     dateWrap: {
       marginHorizontal: 10,
-      marginBottom: 5,
+      marginVertical: 5,
       width: 33,
       height: 33,
       justifyContent: 'center',
@@ -30,19 +34,21 @@ export default {
     },
 
     date: {
-      marginTop: Platform.OS === 'ios' ? 6 : 2,
       fontSize: 18,
-      color: '#fff',
+      color: '#000',
+      backgroundColor: 'transparent',
     },
 
     active: {
-      backgroundColor: '#555',
+      backgroundColor: '#eee',
     },
 
     dayOfWeek: {},
 
     dayOfWeekText: {
-      color: '#eee',
+      paddingVertical: 5,
+      color: '#333',
+      backgroundColor: 'transparent',
     },
   }),
 
@@ -55,7 +61,8 @@ export default {
       paddingTop: 10,
       paddingBottom: 8,
       fontSize: 12,
-      color: '#fff',
+      color: '#000',
+      backgroundColor: 'transparent',
     },
   }),
 }
