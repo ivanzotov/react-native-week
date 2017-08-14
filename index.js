@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 
 import {
   View,
@@ -29,7 +29,7 @@ import defaultStyles from './styles'
 
 export { Item, Month }
 
-export default class Week extends PureComponent {
+export default class Week extends Component {
   static defaultProps = {
     scrollToInitial: true,
     startDate,
