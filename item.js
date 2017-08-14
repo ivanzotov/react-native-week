@@ -16,7 +16,7 @@ export default function({
 }) {
   return (<TouchableOpacity onPress={onPress}>
     <View style={styles.wrap}>
-      <View style={[styles.dateWrap, active && styles.activeDate]}>
+      <View style={[styles.dateWrap, active && styles.active]}>
         <Text style={styles.date}>{ date }</Text>
       </View>
       <View style={styles.dayOfWeek}>
