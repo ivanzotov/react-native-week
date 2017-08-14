@@ -1,0 +1,12 @@
+{
+  "name": "react-native-week",
+  "version": "1.0.0",
+  "description": "A React Native component calendar week",
+  "main": "index.js",
+  "repository": "https://github.com/ivanzotov/react-native-week",
+  "author": "Ivan Zotov",
+  "license": "MIT",
+  "dependencies": {
+    "date-fns": "^1.28.5"
+  }
+}
