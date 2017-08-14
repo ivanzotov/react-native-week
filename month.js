@@ -12,10 +12,12 @@ import defaultStyles from './styles'
 export default function({
   date,
   locale,
-  styles = defaultStyles.month,
+  styles,
 }) {
-  return (<View style={styles.wrap}>
-    <Text style={styles.text}>
+  const _styles = { ...defaultStyles.month, ...styles }
+
+  return (<View style={_styles.wrap}>
+    <Text style={_styles.text}>
       { format(date, 'MMMM YYYY', locale).toUpperCase() }
     </Text>
   </View>)

@@ -71,7 +71,6 @@ export default class Week extends PureComponent {
     const styles = {
       main: { ...defaultStyles.main, ...this.props.styles.main },
       item: { ...defaultStyles.item, ...this.props.styles.item },
-      month: { ...defaultStyles.month, ...this.props.styles.month },
     }
 
     return (<View style={styles.main.wrap}>
