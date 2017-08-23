@@ -50,6 +50,7 @@ export default class Week extends Component {
   }
 
   componentWillReceiveProps(newProps) {
+    this.scrollTo(differenceInDays(newProps.selectedDate, this.props.startDate))
     this.setState({ selectedDate: newProps.selectedDate })
   }
 
