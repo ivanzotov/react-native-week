@@ -50,7 +50,7 @@ export default class Week extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.scrollTo(differenceInDays(newProps.selectedDate, this.props.startDate))
+    this.scrollTo(differenceInDays(newProps.selectedDate, newProps.startDate))
     this.setState({ selectedDate: newProps.selectedDate })
   }
 
@@ -102,7 +102,10 @@ export default class Week extends Component {
             setTimeout(() => this.scrollTo(this.initialIndex, false))
           }
         }}
-        onContentSizeChange={contentWidth => { this.scrollContentWidth = contentWidth }}
+        onContentSizeChange={contentWidth => {
+          this.scrollContentWidth = contentWidth
+          this.scrollTo(differenceInDays(this.props.selectedDate, this.props.startDate))
+        }}
         horizontal
       >
         { this.count > 0 && (new Array(this.count)).fill(1).map((_, index) => {
