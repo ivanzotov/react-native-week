@@ -37,7 +37,6 @@ export default class Week extends Component {
     styles: defaultStyles,
   }
 
-  state = { selectedDate: this.props.selectedDate }
   initialIndex = 0
   scrollWidth = 0
   scrollContentWidth = 0
@@ -45,19 +44,14 @@ export default class Week extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return !isSameDay(nextProps.startDate, this.props.startDate) ||
            !isSameDay(nextProps.endDate, this.props.endDate) ||
-           !isSameDay(nextProps.selectedDate, this.props.selectedDate) ||
-           !isSameDay(nextState.selectedDate, this.state.selectedDate)
+           !isSameDay(nextProps.selectedDate, this.props.selectedDate)
   }
 
   componentWillReceiveProps(newProps) {
     this.scrollTo(differenceInDays(newProps.selectedDate, newProps.startDate))
-    this.setState({ selectedDate: newProps.selectedDate })
   }
 
   onPressDate = (selectedDate, index) => {
-    this.setState({ selectedDate })
-    this.scrollTo(index)
-
     this.props.onPress && this.props.onPress(selectedDate, index)
   }
 
@@ -85,7 +79,7 @@ export default class Week extends Component {
 
     return (<View style={styles.main.wrap}>
       { this.props.header && this.props.header({
-        date: this.state.selectedDate || this.props.startDate,
+        date: this.props.selectedDate || this.props.startDate,
         locale,
       }) }
 
@@ -112,7 +106,7 @@ export default class Week extends Component {
           const fullDate = addDays(this.props.startDate, index)
           const dayOfWeek = format(fullDate, 'dd', locale)
           const date = getDate(fullDate)
-          const active = isSameDay(fullDate, this.state.selectedDate)
+          const active = isSameDay(fullDate, this.props.selectedDate)
           const onPress = () => this.onPressDate(fullDate, index)
 
           if (active) {
@@ -134,7 +128,7 @@ export default class Week extends Component {
         })}
       </ScrollView>
       { this.props.footer && this.props.footer({
-        date: this.state.selectedDate || this.props.startDate,
+        date: this.props.selectedDate || this.props.startDate,
         locale,
       }) }
     </View>)
